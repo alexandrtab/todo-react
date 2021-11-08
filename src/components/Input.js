@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Input({ addTask, date, sort }) {
+export const Input = ({ addTask })=> {
   const [userInput, setUserInput] = useState("");
 
   const handleChange = (e) => {
@@ -8,7 +8,7 @@ function Input({ addTask, date, sort }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask(userInput, date);
+    addTask(userInput );
 
     setUserInput("");
   };
@@ -27,9 +27,9 @@ function Input({ addTask, date, sort }) {
         onKeyDown={handleKeyPress}
         placeholder="Write your task..."
       />
-      <button>Submit</button>
+      <button type="submit" onClick={(e)=>handleSubmit(e)}>Todo</button>
     </form>
   );
 }
 
-export default Input;
+

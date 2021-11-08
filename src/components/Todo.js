@@ -1,8 +1,6 @@
 import React from "react";
-import moment from "moment";
 
-function List({ todo, removeTask, toggleTask }) {
-  const resultTime = moment(todo.date).subtract(10, "days").calendar();
+export const Todo =({ todo, removeTask, toggleTask })=> {
 
   return (
     <div key={todo.id} className="item-todo">
@@ -11,8 +9,6 @@ function List({ todo, removeTask, toggleTask }) {
         onClick={() => toggleTask(todo.id)}
       >
         {todo.task}
-        {"   "}
-        {resultTime}
       </div>
       <div className="item-delete" onClick={() => removeTask(todo.id)}>
         х
@@ -20,5 +16,3 @@ function List({ todo, removeTask, toggleTask }) {
     </div>
   );
 }
-
-export default List;

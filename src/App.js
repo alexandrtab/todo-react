@@ -1,19 +1,15 @@
 import { useState } from "react";
-import moment from "moment";
-import Input from "./components/Input";
-import List from "./components/List";
-import Calendar from "./components/Calendar";
+import {Input} from "./components/Input";
+import {Todo} from "./components/Todo";
 import "./App.css";
 
-function App() {
-  const [startDate, setStartDate] = useState(new Date());
+export const App = () => {
   const [todos, setTodos] = useState([]);
 
-  const addTodo = (userInput, date) => {
-    if (userInput && date) {
+  const handleAddTodo = (userInput) => {
+    if (userInput) {
       const newTask = {
         id: Math.random().toString(36).substr(2, 9),
-        date: date,
         task: userInput,
         complete: false,
       };
@@ -39,11 +35,10 @@ function App() {
         <h2>Tasks number: {todos.length}</h2>
       </header>
       <h3>Choose the date:</h3>
-      <Calendar date={startDate} setDate={setStartDate} />
-      <Input addTask={addTodo} date={startDate} />
+      <Input addTask={handleAddTodo} />
       {todos.map((todo) => {
         return (
-          <List
+          <Todo
             key={todo.id}
             todo={todo}
             toggleTask={handleToggle}
@@ -54,5 +49,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
